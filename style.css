@@ -1,0 +1,221 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+/* fonts */
+/* :root{
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+} */
+body{
+    font-family: "Open Sans", sans-serif;
+}
+.wrapper{
+    background: black;
+    position: fixed;
+    width: 100%;
+}
+.wrapper nav{
+    display: flex;
+    position: relative;
+    max-width: calc(100% - 200px);
+    margin: 0 auto;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .content{
+    display: flex;
+    align-items: center;
+}
+nav .content .links{
+    display: flex;
+    margin-left: 80px;
+}
+.content .logo a{
+    color: aqua;
+    font-size: 30px;
+    font-weight: 600;
+}
+.content .links li a,
+.content .links li label{
+    color: aqua;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 9px 17px;
+    transition: all 0.3s ease;
+}
+.content .links li a:hover,
+.content .links li label:hover{
+    background-color: aqua;
+    color: black;
+}
+.wrapper .menu-icon,
+.wrapper .search-icon{
+    color: aqua;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 70px;
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+}
+.wrapper .menu-icon{
+    display: none;
+}
+.wrapper #show-search:checked ~ .search-icon i::before{
+    content: "\f00d";
+}
+.wrapper .search-box{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    max-width: calc(100%-100px);
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    line-height: 70px;
+   
+}
+.wrapper #show-search:checked ~ .search-box{
+    opacity: 1;
+    pointer-events: auto;
+}
+.search-box input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: aqua;
+    background-color: black;
+}
+.search-box input::placeholder{
+    color: aqua;
+}
+.search-box .go-icon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50px);
+    line-height: 60px;
+    width: 70px;
+    border: none;
+    background-color: black;
+    color: aqua;
+    font-size: 18px;
+    cursor: pointer;
+}
+ .wrapper input[type="checkbox"]{
+    display: none;
+} 
+.search-box .go-icon .fa{
+    padding-top: 25px;
+    font-size: 40px;
+}
+/* Dropdown Menu code starts */
+.content .links ul{
+    position: absolute;
+    background-color: black;
+    top: 70px;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+.content .links li:hover > ul{
+    top: 72px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+.content .links ul li a{
+    display: block;
+    width: 100%;
+    line-height: 20px;
+    border-radius: 0px !important;
+}
+.content .links li a.desktop-link{
+    display: none;
+}
+/* Responsive Code Start */
+@media screen and (max-width: 1250px) {
+    .wrapper nav{
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    nav .content .links{
+        margin-left: 30px;
+    }
+    .content .links li a{
+        padding: 8px 13px;
+    }
+    .wrapper .search-box{
+        max-width: calc(100% - 100px);
+    }
+    .wrapper .search-box input{
+        padding: 0 100px 0 15px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .wrapper .menu-icon{
+        display: block;
+    }
+    .wrapper #show-menu:checked ~ .menu-icon i::before{
+        content: "\f00d";
+    }
+    nav .content .links{
+        display: block;
+        position: fixed;
+        background-color: black;
+        height: 100%;
+        width: 90%;
+        top: 70px;
+        left: -100%;
+        margin-left: 0;
+        max-width: 350px;
+        transition: all 0.3s ease;
+    }
+    nav #show-menu:checked ~ .content .links{
+        left: 0%;
+    }
+    .content .links li{
+        margin: 15px 20px;
+    } 
+    .content .links li label,
+    .content .links li a{
+        line-height: 40px;
+        font-size: 20px;
+        display: block;
+        padding: 8px 18px;
+        cursor: pointer;
+    }
+     .content .links li a.desktop-link{
+        display: none;
+    } 
+    /* Responsive Dropdown Menu code start */
+    .content .links ul,
+    .content .links ul u l{
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        max-height: 0px;
+        background: none;
+        overflow: hidden;
+    }
+    .content .links #show-services:checked ~ ul{
+        max-height: 100vh;
+    }
+    .content .links ul li{
+        margin: 7px 20px;
+    }
+    .content .links ul li a{
+        font-size: 20px;
+        line-height: 20px;
+    }
+}
